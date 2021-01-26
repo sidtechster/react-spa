@@ -36,7 +36,16 @@ body {
   }
 
   .active {
-  background-color: #0099FF;
-}
+    background-color: #0099FF;
+  }
+
+  .port-fundType {
+    background-color: gray;
+    padding: 5px;
+  }
+
+  .port-subFund {
+    width: 400px;
+  }
 
 
