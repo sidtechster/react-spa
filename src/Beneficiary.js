@@ -9,8 +9,7 @@ export class Beneficiary extends Component {
             id: '',
             city: '',
             percentage: '',
-            list: [],
-            total: 0
+            list: []
         };
     }
 
@@ -22,6 +21,24 @@ export class Beneficiary extends Component {
             city: '',
             percentage: ''     
         });
+    }
+
+    delItem = i => {
+        this.setState(state => {
+            const list = state.list.filter((item, j) => i !== j);        
+            return {
+                list,
+            };
+        });
+    }
+
+    save = e => {
+        e.preventDefault();
+        var total = Number(this._total());
+        if (total > 100) {
+            console.log("ERROR")
+        } else {
+        console.log(total) }
     }
 
     handleChange = input => e => {
@@ -47,12 +64,13 @@ export class Beneficiary extends Component {
             <div>
                 Beneficiary
                 
-                <table>                         
-                    {this.state.list.map(item => (
-                        <tr key={item.id}>
+                <table id="customers">                         
+                    {this.state.list.map((item, index) => (
+                        <tr key={index}>
                             <td>{item.id}</td>
                             <td>{item.city}</td>
                             <td>{item.percentage}</td>
+                            <td><button type="button" onClick={() => this.delItem(index) }>-</button></td>
                         </tr>
                     ))}
                 </table>
@@ -61,8 +79,9 @@ export class Beneficiary extends Component {
                 <input type="text" value={this.state.percentage} onChange={this.handleChange('percentage')}></input>
                 <button type="button" onClick={ this.addItem }>+</button>
                 <br />
-                {/* TOTAL: { this._total() } */}
-                TOTAL: { this.state.total }
+                TOTAL: { this._total() }
+                <br />
+                <button type="button" onClick={ this.save }>Save</button>
             </div>
         );
     }

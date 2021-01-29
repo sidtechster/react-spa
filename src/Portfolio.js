@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import portfolios from './data/portfolio.json';
+import Fund from './Fund';
 
 export class Portfolio extends Component {
 
+    
+
+    
+
     portfolioFunds = funds => funds.map((fund) => {
-        return (
-            <tr>
-                <td style={{width:"400px"}} key={fund.name}>{fund.name}</td>
-                <td style={{width:"100px"}} key={fund.fee}>{fund.fee}</td>
-                <td style={{width:"50px"}}><input type="checkbox" /></td>
-                <td><input type="text" style={{width:"50px"}} />&nbsp;%</td>
-            </tr>
+        return (            
+            <Fund fundName={fund.name} fundFee={fund.fee} />            
         )
     });
 
